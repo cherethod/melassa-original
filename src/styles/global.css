@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@theme {
+  /* ========== COLORES ========== */
+  --color-melassa-blue: #00ADEF;
+  --color-melassa-blue-dark: #2D548B;
+  --color-melassa-blue-hover: #1d63c5;
+  --color-melassa-pink: #FF69B4;
+  --color-melassa-pink-light: #FFB6D9;
+  
+  /* Colores neutros */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-gray-50: #F9FAFB;
+  --color-gray-100: #F3F4F6;
+  --color-gray-200: #E5E7EB;
+  --color-gray-300: #D1D5DB;
+  --color-gray-400: #9CA3AF;
+  --color-gray-500: #6B7280;
+  --color-gray-600: #4B5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1F2937;
+  --color-gray-900: #111827;
+  
+  /* ========== TIPOGRAFÍA ========== */
+  --font-family-heading: "Playfair Display", serif;
+  --font-family-body: "Inter", sans-serif;
+  
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-7xl: 4.5rem;
+  --font-size-8xl: 6rem;
+  
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+  
+  /* ========== ESPACIADO ========== */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-section: 4rem;
+  --spacing-component: 2rem;
+  
+  /* ========== RADIOS ========== */
+  --radius-none: 0;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* ========== SOMBRAS ========== */
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-pink: 0 4px 16px rgba(255, 105, 180, 0.3);
+  --shadow-blue: 0 4px 16px rgba(0, 173, 239, 0.3);
+}
+
+/* ============================================================
+   KEYFRAMES - ANIMACIONES
+   ============================================================ */
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(-30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes scaleUp {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ============================================================
+   UTILIDADES PERSONALIZADAS
+   ============================================================ */
+
+@layer utilities {
+  /* ANIMACIONES */
+  .animate-fade-in { animation: fadeIn 0.8s ease-out; }
+  .animate-slide-up { animation: slideUp 0.6s ease-out; }
+  .animate-slide-down { animation: slideDown 0.6s ease-out; }
+  .animate-bounce-slow { animation: bounceSlow 2s ease-in-out infinite; }
+  .animate-scale-up { animation: scaleUp 0.3s ease-out; }
+  .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+  
+  /* ANIMATION DELAYS */
+  .animation-delay-100 { animation-delay: 0.1s; }
+  .animation-delay-200 { animation-delay: 0.2s; }
+  .animation-delay-300 { animation-delay: 0.3s; }
+  .animation-delay-400 { animation-delay: 0.4s; }
+  .animation-delay-500 { animation-delay: 0.5s; }
+  .animation-delay-600 { animation-delay: 0.6s; }
+  .animation-delay-700 { animation-delay: 0.7s; }
+  .animation-delay-800 { animation-delay: 0.8s; }
+  .animation-delay-1000 { animation-delay: 1s; }
+  
+  /* GRADIENTES */
+  .bg-gradient-hero { background: linear-gradient(135deg, #00ADEF 0%, #2D548B 100%); }
+  .bg-gradient-pink { background: linear-gradient(135deg, #FFB6D9 0%, #FF69B4 100%); }
+  
+  /* TEXT SHADOWS */
+  .text-shadow-sm { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+  .text-shadow-md { text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); }
+  .text-shadow-lg { text-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
+  
+  /* BOX SHADOWS */
+  .shadow-pink { box-shadow: 0 4px 16px rgba(255, 105, 180, 0.3); }
+  .shadow-blue { box-shadow: 0 4px 16px rgba(0, 173, 239, 0.3); }
+  
+  /* HOVER EFFECTS */
+  .hover-lift { transition: all 0.3s ease-out; }
+  .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); }
+  
+  /* TEXT GRADIENT */
+  .text-gradient {
+    background: linear-gradient(135deg, #00ADEF 0%, #FF69B4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) { .hidden-mobile { display: none; } }
+  @media (min-width: 769px) { .hidden-desktop { display: none; } }
+  
+  /* UTILITIES */
+  .scroll-smooth { scroll-behavior: smooth; }
+  .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  .flex-center { @apply flex items-center justify-center; }
+  .grid-center { @apply grid place-items-center; }
+}

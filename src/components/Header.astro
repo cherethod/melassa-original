@@ -1,0 +1,77 @@
+---
+---
+<header id="header-container" class="flex items-center justify-between py-10 px-12 md:px-6 bg-melassa-blue-dark sticky top-0 z-50 font-family-body">
+    
+    <!-- LOGO (visible siempre) -->
+    <span class="font-heading text-white text-xl md:text-2xl font-bold">
+        MELASSA
+    </span>
+    
+    <!-- MENÚ DESKTOP (Solo visible en md+) -->
+    <nav class="hidden md:flex gap-6 lg:gap-8">
+        <a href="/" class="text-white hover:text-melassa-pink">Inicio</a>
+        <a href="#productos" class="text-white hover:text-melassa-pink">Productos</a>
+        <a href="#ubicacion" class="text-white hover:text-melassa-pink">Ubicación</a>
+        <a href="#contacto" class="text-white hover:text-melassa-pink">Contacto</a>
+    </nav>
+    
+    <!-- BOTÓN CTA (Solo visible en md+) -->
+    <a href="#" class="hidden md:block bg-melassa-pink text-white px-6 py-2 rounded-full hover:bg-melassa-pink-light">
+        Comprar
+    </a>
+    
+    <!-- BOTÓN HAMBURGER (Solo visible en móvil) -->
+    <button id="menu-btn" class="md:hidden text-white text-2xl cursor-pointer">☰</button>
+
+</header>
+
+<!-- MENÚ MÓVIL (Oculto por defecto, solo visible en móvil) -->
+<nav class="hidden md:hidden bg-melassa-blue-dark flex-col gap-4 p-6">
+    <a href="/" class="text-white hover:text-melassa-pink">Inicio</a>
+    <a href="#productos" class="text-white hover:text-melassa-pink">Productos</a>
+    <a href="#ubicacion" class="text-white hover:text-melassa-pink">Ubicación</a>
+    <a href="#contacto" class="text-white hover:text-melassa-pink">Contacto</a>
+    <a href="#" class="bg-melassa-pink text-white px-6 py-2 rounded-full text-center">Comprar</a>
+</nav>
+
+<style>
+    header#header-container {
+        height: 72px;
+        padding: 16px 14px;
+        transition: all .3s ease-in-out;
+    }
+    header.burger-active {
+        height: 100dvh !important;
+        width: 100dvw;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+         #menu-btn {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+         }
+    }
+</style>
+
+<script>
+    // SOLO para interactividad (abrir/cerrar)
+    // CSS maneja el responsivo automáticamente
+    
+    const btn = document.getElementById('menu-btn');
+    const header = document.getElementById('header-container');
+    
+    btn?.addEventListener('click', () => {
+        header?.classList.toggle('burger-active');
+        btn.textContent = (header?.classList.contains('burger-active')) ? "X" : "☰"
+    });
+</script>

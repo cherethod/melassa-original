@@ -1,22 +1,103 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+  keywords?: string[];
+  type?: 'website' | 'article';
+  locale?: string;
+}
+
+// Props con valores por defecto
+const {
+  title = 'Melassa Coffee & Bake | Galletas y Pasteles Artesanales en Reus',
+  description = 'Panadería artesanal en Reus con galletas, rollitos y tartas personalizadas.',
+  image = '/images/og-image.jpg',
+  url = 'https://melassa.com',
+  keywords = ['galletas Reus', 'panadería', 'Crumbl'],
+  type = 'website',
+  locale = 'es_ES'
+} = Astro.props;
+
+// Datos FIJOS (empresa)
+const EMPRESA = {
+  nombre: 'Melassa Coffee & Bake',
+  telefono: '+34 643 89 13 29',
+  email: 'Melassacoffeeandbake@gmail.com',
+  direccion: 'Carrer de Batan, 33',
+  ciudad: 'Reus',
+  region: 'Tarragona',
+  postal: '43204',
+  pais: 'ES',
+  latitude: '41.1523431154954',
+  longitude: '1.112668362652971'
+};
+
+// Schema usa EMPRESA + props dinámicos
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": EMPRESA.nombre,
+  "description": description,  // ← De props
+  "url": url,                  // ← De props
+  "telephone": EMPRESA.telefono,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": EMPRESA.direccion,
+    "addressLocality": EMPRESA.ciudad,
+    "addressRegion": EMPRESA.region,
+    "postalCode": EMPRESA.postal,
+    "addressCountry": EMPRESA.pais
+  }
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- DINÁMICO (de props) -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(', ')} />
+    <link rel="canonical" href={url} />
+    
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={url} />
+    
+    <!-- SCHEMA -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+    
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" 
+      rel="stylesheet" 
+    />
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#00ADEF" />
+  </head>
+  
+  <body class="antialiased">
+    <slot />
+  </body>
+  
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</astro>

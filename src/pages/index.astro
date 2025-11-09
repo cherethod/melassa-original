@@ -1,11 +1,37 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Products from "../components/Products.astro";
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+ title="Nuestros Productos | Melassa Coffee & Bake"
+  description="Galletas Crumbl, rollitos de canela, brownies de chocolate belga y tartas personalizadas. Todos horneados frescos diariamente en nuestra panadería artesanal de Reus."
+  image="/images/productos-melassa.jpg"
+  url="https://melassa.com/productos"
+  keywords={[
+    'galletas Crumbl Reus',
+    'rollitos de canela',
+    'brownies chocolate',
+    'tartas personalizadas Reus'
+  ]}
+>
+	<Header />
+  <main class="flex flex-col items-center justify-center relative">
+    <Hero />
+	<Products />
+    <img src="./cookie-monster.png" alt="" class="fixed left-0 bottom-0 max-w-1/5" />
+  </main>
 </Layout>
+
+<style>
+	main {
+		min-height: calc(100dvh - 72px);
+	}
+ 
+</style>
