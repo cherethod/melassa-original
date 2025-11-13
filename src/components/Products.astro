@@ -1,9 +1,23 @@
 ---
+import HomeProductCard from "./HomeProductCard.astro";
+
 
 ---
 
-<div class="productos-container grid grid-cols-3 w-screen h-72 [&>.product-card]:w-20 [&>.product-card]:h-20 [&>.product-card]:bg-amber-700 ">
-  <div class="product-card"></div>
-  <div class="product-card"></div>
-  <div class="product-card"></div>
+<div class="productos-container grid grid-cols-1 gap-16 lg:grid-cols-3 w-4/5 py-24">
+  <HomeProductCard 
+    imageSrc={"img/cookies.jpg"}
+    imageAlt="Aparador con surtido de galletas estilo New York" 
+    rotationDeegres={"-12"}
+    />
+  <HomeProductCard 
+    imageSrc={"img/cookies.jpg"}
+    imageAlt="Aparador con surtido de galletas estilo New York" 
+    rotationDeegres={"12"}
+    />
+      <HomeProductCard 
+    imageSrc={"img/cookies.jpg"}
+    imageAlt="Aparador con surtido de galletas estilo New York" 
+    rotationDeegres={"-12"}
+    />
 </div>

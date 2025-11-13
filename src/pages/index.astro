@@ -15,7 +15,7 @@ import "../styles/global.css";
   image="/images/productos-melassa.jpg"
   url="https://melassa.com/productos"
   keywords={[
-    'galletas Crumbl Reus',
+    'galletas New York Reus',
     'rollitos de canela',
     'brownies chocolate',
     'tartas personalizadas Reus'
@@ -25,9 +25,38 @@ import "../styles/global.css";
   <main class="flex flex-col items-center justify-center relative">
     <Hero />
 	<Products />
-    <img src="./cookie-monster.png" alt="" class="fixed left-0 bottom-0 max-w-1/5" />
+    <img id="cookie-monster" src="./cookie-monster.png" alt="" class="fixed left-0 bottom-0 max-w-1/5 z-20" />
   </main>
+  <footer id="footer">
+    <div class="bg-black h-96"></div>
+  </footer>
 </Layout>
+<script is:inline>
+  const monster = document.getElementById('cookie-monster');
+  const footer = document.getElementById('footer');
+
+  function onScroll() {
+    if (!monster || !footer) return;
+    // Obtener posición del footer en relación a la ventana
+    const footerRect = footer.getBoundingClientRect();
+    const monsterHeight = monster.offsetHeight;
+
+    // Si el footer aparece en ventana, ajusta la posición del monster
+    if (footerRect.top < window.innerHeight) {
+      // Pega el monster justo encima del footer
+      const overlap = window.innerHeight - footerRect.top;
+      monster.style.bottom = `${overlap}px`;
+    } else {
+      monster.style.bottom = '0px';
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+
+  // Ajuste inicial
+  onScroll();
+</script>
 
 <style>
 	main {
