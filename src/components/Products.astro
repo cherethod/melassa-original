@@ -5,6 +5,7 @@ import HomeProductCard from "./HomeProductCard.astro";
 ---
 
 <div class="productos-container grid grid-cols-1 gap-16 lg:grid-cols-3 w-4/5 py-24">
+  <h3 class="col-span-3 w-full text-center font-family-heading text-4xl font-bold">Productos destacados</h3>
   <HomeProductCard 
     imageSrc={"img/cookies.jpg"}
     imageAlt="Aparador con surtido de galletas estilo New York" 
@@ -20,4 +21,5 @@ import HomeProductCard from "./HomeProductCard.astro";
     imageAlt="Aparador con surtido de galletas estilo New York" 
     rotationDeegres={"-12"}
     />
+    <a href="#" class="btn-secondary col-span-3 w-fit place-self-center">Ver todos nuestros productos</a>
 </div>
